@@ -1,0 +1,385 @@
+.detalhes-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.detalhes-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalhes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+
+.detalhe-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalhe-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detalhe-item label {
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalhe-value {
+  font-size: 1rem;
+  color: #333;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.aprovacao-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.aprovacao-section h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.aprovacao-box {
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.aprovacao-box.aprovado {
+  background-color: #d4edda;
+  border-left-color: #10b981;
+}
+
+.aprovacao-box.rejeitado {
+  background-color: #f8d7da;
+  border-left-color: #ef4444;
+}
+
+.aprovacao-status {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.aprovacao-motivo {
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.aprovacao-data {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.historico-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.historico-section h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.historico-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historico-item {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.historico-acao {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.historico-motivo {
+  color: #666;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.historico-data {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.voo-escolhido-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.voo-escolhido-section h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.voo-escolhido-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #0ea5e9;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.voo-escolhido-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #bae6fd;
+}
+
+.voo-escolhido-companhia-preco {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voo-escolhido-companhia {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0c4a6e;
+}
+
+.voo-escolhido-preco {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.voo-escolhido-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.voo-escolhido-trecho {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid #0ea5e9;
+}
+
+.voo-escolhido-trecho.volta {
+  border-left-color: #8b5cf6;
+}
+
+.voo-escolhido-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.voo-escolhido-rota {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.voo-escolhido-rota strong {
+  color: #0c4a6e;
+}
+
+.voo-escolhido-horarios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.voo-escolhido-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.voo-escolhido-direto {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.voo-escolhido-escalas {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.voo-escolhido-segmentos {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #bae6fd;
+}
+
+.voo-escolhido-segmentos h4 {
+  font-size: 1rem;
+  color: #0c4a6e;
+  margin-bottom: 1rem;
+}
+
+.voo-escolhido-segmento {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid #0ea5e9;
+}
+
+.segmento-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.segmento-horarios {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.badge-urgencia {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.badge-urgencia.urgente {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.status-PENDENTE_COTACAO,
+.status-badge.status-pendente_gerente,
+.status-badge.status-PENDENTE_GERENTE {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status-AGUARDANDO_ESCOLHA,
+.status-badge.status-AGUARDANDO_APROVACAO {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-badge.status-PENDENTE_DIRETOR,
+.status-badge.status-pendente_diretor {
+  background-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+.status-badge.status-APROVADO_FINAL {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.status-EM_COMPRA {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status-COMPRADA,
+.status-badge.status-processada {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.status-REJEITADA,
+.status-badge.status-rejeitada {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.status-AJUSTE_SOLICITADO {
+  background-color: #fde68a;
+  color: #78350f;
+}
+
+@media (max-width: 768px) {
+  .detalhes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .voo-escolhido-companhia-preco {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .voo-escolhido-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .segmento-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .segmento-horarios {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
