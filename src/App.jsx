@@ -16,6 +16,16 @@ function App() {
     const savedUser = localStorage.getItem('user')
     if (savedUser) {
       setUser(JSON.parse(savedUser))
+    } else {
+      // Criar usuário padrão automaticamente (sem login)
+      const defaultUser = {
+        id: '1',
+        name: 'Usuário',
+        email: 'usuario@empresa.com',
+        role: 'colaborador'
+      }
+      setUser(defaultUser)
+      localStorage.setItem('user', JSON.stringify(defaultUser))
     }
     setLoading(false)
   }, [])
