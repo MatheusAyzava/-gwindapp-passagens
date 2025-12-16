@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import Sidebar from './Sidebar'
 import HeaderUser from './HeaderUser'
 import './Compras.css'
@@ -19,7 +20,7 @@ function Compras({ user, onLogout }) {
 
   const loadSolicitacoes = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/solicitacoes')
+      const response = await axios.get(`${API_BASE_URL}/api/solicitacoes`)
       setSolicitacoes(response.data)
     } catch (error) {
       console.error('Erro ao carregar solicitações:', error)
@@ -35,7 +36,7 @@ function Compras({ user, onLogout }) {
   const confirmarProcessamento = async () => {
     setLoading(true)
     try {
-      await axios.post(`http://localhost:3001/api/solicitacoes/${selectedSolicitacao.id}/processar-compras`, {
+      await axios.post(`${API_BASE_URL}/api/solicitacoes/${selectedSolicitacao.id}/processar-compras`, {
         processado: true,
         observacoes
       })

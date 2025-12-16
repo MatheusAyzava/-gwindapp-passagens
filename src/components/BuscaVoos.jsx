@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import './BuscaVoos.css'
 
 function BuscaVoos({ origem, destino, dataIda, dataVolta, onVooSelecionado, vooSelecionado }) {
@@ -17,7 +18,7 @@ function BuscaVoos({ origem, destino, dataIda, dataVolta, onVooSelecionado, vooS
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/api/voos/confirmar-preco', {
+      const response = await axios.post(`${API_BASE_URL}/api/voos/confirmar-preco`, {
         flightOffer: voo._originalOffer
       });
       
@@ -69,7 +70,7 @@ function BuscaVoos({ origem, destino, dataIda, dataVolta, onVooSelecionado, vooS
         params.append('dataVolta', dataVolta)
       }
 
-      const response = await axios.get(`http://localhost:3001/api/voos/buscar?${params}`)
+      const response = await axios.get(`${API_BASE_URL}/api/voos/buscar?${params}`)
       setVoos(response.data)
       setMostrarResultados(true)
       

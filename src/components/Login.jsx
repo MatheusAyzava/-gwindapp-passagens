@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import './Login.css'
 
 function Login({ onLogin }) {
@@ -14,7 +15,7 @@ function Login({ onLogin }) {
     setLoading(true)
 
     try {
-      const response = await axios.post('http://localhost:3001/api/login', {
+      const response = await axios.post(`${API_BASE_URL}/api/login`, {
         email,
         password
       })

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts'
+import API_BASE_URL from '../config'
 import Sidebar from './Sidebar'
 import HeaderUser from './HeaderUser'
 import './Dashboard.css'
@@ -20,8 +21,8 @@ function Dashboard({ user, onLogout }) {
   const loadData = async () => {
     try {
       const [solicitacoesRes, statsRes] = await Promise.all([
-        axios.get('http://localhost:3001/api/solicitacoes'),
-        axios.get('http://localhost:3001/api/estatisticas')
+        axios.get(`${API_BASE_URL}/api/solicitacoes`),
+        axios.get(`${API_BASE_URL}/api/estatisticas`)
       ])
       setSolicitacoes(solicitacoesRes.data)
       setStats(statsRes.data)

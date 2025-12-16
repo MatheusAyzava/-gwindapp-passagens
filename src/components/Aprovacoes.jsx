@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import Sidebar from './Sidebar'
 import HeaderUser from './HeaderUser'
 import './Aprovacoes.css'
@@ -21,7 +22,7 @@ function Aprovacoes({ user, onLogout }) {
 
   const loadSolicitacoes = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/solicitacoes')
+      const response = await axios.get(`${API_BASE_URL}/api/solicitacoes`)
       const todas = response.data
       
       setSolicitacoesGerente(todas.filter(s => s.status === 'pendente_gerente'))
@@ -59,7 +60,7 @@ function Aprovacoes({ user, onLogout }) {
         ? `/api/solicitacoes/${selectedSolicitacao.id}/aprovar-gerente`
         : `/api/solicitacoes/${selectedSolicitacao.id}/aprovar-diretor`
 
-      await axios.post(`http://localhost:3001${endpoint}`, {
+      await axios.post(`${API_BASE_URL}${endpoint}`, {
         aprovado: true,
         motivo
       })
@@ -87,7 +88,7 @@ function Aprovacoes({ user, onLogout }) {
         ? `/api/solicitacoes/${selectedSolicitacao.id}/aprovar-gerente`
         : `/api/solicitacoes/${selectedSolicitacao.id}/aprovar-diretor`
 
-      await axios.post(`http://localhost:3001${endpoint}`, {
+      await axios.post(`${API_BASE_URL}${endpoint}`, {
         aprovado: false,
         motivo
       })

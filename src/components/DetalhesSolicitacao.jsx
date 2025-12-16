@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import Sidebar from './Sidebar'
 import HeaderUser from './HeaderUser'
 import './DetalhesSolicitacao.css'
@@ -17,7 +18,7 @@ function DetalhesSolicitacao({ user, onLogout }) {
 
   const loadSolicitacao = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/solicitacoes/${id}`)
+      const response = await axios.get(`${API_BASE_URL}/api/solicitacoes/${id}`)
       setSolicitacao(response.data)
     } catch (error) {
       console.error('Erro ao carregar solicitação:', error)

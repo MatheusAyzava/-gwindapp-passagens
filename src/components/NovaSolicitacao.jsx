@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import API_BASE_URL from '../config'
 import Sidebar from './Sidebar'
 import HeaderUser from './HeaderUser'
 import './NovaSolicitacao.css'
@@ -85,7 +86,7 @@ function NovaSolicitacao({ user, onLogout }) {
         justificativa: formData.motivoViagem || formData.justificativa
       }
       
-      await axios.post('http://localhost:3001/api/solicitacoes', solicitacaoData)
+      await axios.post(`${API_BASE_URL}/api/solicitacoes`, solicitacaoData)
       navigate('/dashboard')
     } catch (err) {
       setError('Erro ao criar solicitação. Tente novamente.')
