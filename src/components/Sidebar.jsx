@@ -20,7 +20,7 @@ function Sidebar({ user, onLogout }) {
         <div className="sidebar-logo">
           <div className="logo-icon">✈️</div>
           <div className="logo-text">
-            <div className="logo-title">TravelFlow</div>
+            <div className="logo-title">Gwind Air</div>
             <div className="logo-subtitle">Sistema de Passagens</div>
           </div>
         </div>
