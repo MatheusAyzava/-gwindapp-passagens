@@ -87,7 +87,8 @@ function NovaSolicitacao({ user, onLogout }) {
       }
       
       await axios.post(`${API_BASE_URL}/api/solicitacoes`, solicitacaoData)
-      navigate('/dashboard')
+      // Após criar, já vai para a tela de pendências de aprovação
+      navigate('/aprovacoes')
     } catch (err) {
       setError('Erro ao criar solicitação. Tente novamente.')
       console.error('Erro:', err)

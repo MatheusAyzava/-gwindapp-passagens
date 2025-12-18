@@ -1,11 +1,10 @@
-// Configuração da URL da API baseada no ambiente
-// Para produção, configure a variável de ambiente VITE_API_URL na Netlify
-// Ou publique o backend e atualize a URL abaixo
-const API_BASE_URL = import.meta.env.VITE_API_URL || 
-  (import.meta.env.PROD 
-    ? 'http://localhost:3001' // TODO: Substitua pela URL do seu backend publicado
-    : 'http://localhost:3001' // URL local para desenvolvimento
-  )
+// Configuração da URL da API
+// IMPORTANTE: em produção (Netlify/iframe), NUNCA pode ficar em localhost.
+// Use VITE_API_URL apontando para o backend publicado (Render).
+// Fallback: usa a própria origem (quando frontend e backend estão no mesmo domínio).
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001')
 
 export default API_BASE_URL
 
