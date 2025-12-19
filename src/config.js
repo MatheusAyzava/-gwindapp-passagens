@@ -4,7 +4,7 @@
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD 
-    ? 'https://gwindapp-passagens-backend.onrender.com' // Backend no Render (ajuste se necessário)
+    ? 'https://gwindapp-passagens-backend-1.onrender.com' // Backend no Render (ajuste se necessário)
     : 'http://localhost:3001' // Local para desenvolvimento
   )
 
