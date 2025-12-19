@@ -21,13 +21,30 @@ function Dashboard({ user, onLogout }) {
   const loadData = async () => {
     try {
       const [solicitacoesRes, statsRes] = await Promise.all([
-        axios.get(`${API_BASE_URL}/api/solicitacoes`),
-        axios.get(`${API_BASE_URL}/api/estatisticas`)
+        axios.get(`${API_BASE_URL}/api/solicitacoes`, { timeout: 60000 }),
+        axios.get(`${API_BASE_URL}/api/estatisticas`, { timeout: 60000 })
       ])
-      setSolicitacoes(solicitacoesRes.data)
-      setStats(statsRes.data)
+      setSolicitacoes(solicitacoesRes.data || [])
+      setStats(statsRes.data || {
+        pendenteGerente: 0,
+        pendenteDiretor: 0,
+        pendenteCompras: 0,
+        aprovadas: 0,
+        rejeitadas: 0,
+        processadas: 0
+      })
     } catch (error) {
       console.error('Erro ao carregar dados:', error)
+      // Definir valores padrão em caso de erro
+      setSolicitacoes([])
+      setStats({
+        pendenteGerente: 0,
+        pendenteDiretor: 0,
+        pendenteCompras: 0,
+        aprovadas: 0,
+        rejeitadas: 0,
+        processadas: 0
+      })
     }
   }
 
@@ -88,45 +105,45 @@ function Dashboard({ user, onLogout }) {
               <HeaderUser user={user} onLogout={onLogout} />
             </div>
           </div>
-          {stats && (
-            <div className="stats-grid">
-              <div className="stat-card">
-                <div className="stat-icon stat-icon-pending">⏱️</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stats.pendenteGerente + stats.pendenteDiretor + stats.pendenteCompras}</div>
-                  <div className="stat-label">Pendentes</div>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-icon stat-icon-pending">⏱️</div>
+              <div className="stat-content">
+                <div className="stat-value">
+                  {stats ? (Number(stats.pendenteGerente || 0) + Number(stats.pendenteDiretor || 0) + Number(stats.pendenteCompras || 0)) : 0}
                 </div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon stat-icon-approved">✓</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stats.aprovadas}</div>
-                  <div className="stat-label">Aprovadas</div>
-                </div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon stat-icon-rejected">✗</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stats.rejeitadas}</div>
-                  <div className="stat-label">Rejeitadas</div>
-                </div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon stat-icon-purchase">🛒</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stats.pendenteCompras}</div>
-                  <div className="stat-label">Em Compra</div>
-                </div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-icon stat-icon-bought">📦</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stats.aprovadas}</div>
-                  <div className="stat-label">Compradas</div>
-                </div>
+                <div className="stat-label">Pendentes</div>
               </div>
             </div>
-          )}
+            <div className="stat-card">
+              <div className="stat-icon stat-icon-approved">✓</div>
+              <div className="stat-content">
+                <div className="stat-value">{stats ? Number(stats.aprovadas || 0) : 0}</div>
+                <div className="stat-label">Aprovadas</div>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-icon-rejected">✗</div>
+              <div className="stat-content">
+                <div className="stat-value">{stats ? Number(stats.rejeitadas || 0) : 0}</div>
+                <div className="stat-label">Rejeitadas</div>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-icon-purchase">🛒</div>
+              <div className="stat-content">
+                <div className="stat-value">{stats ? Number(stats.pendenteCompras || 0) : 0}</div>
+                <div className="stat-label">Em Compra</div>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-icon-bought">📦</div>
+              <div className="stat-content">
+                <div className="stat-value">{stats ? Number(stats.processadas || stats.aprovadas || 0) : 0}</div>
+                <div className="stat-label">Compradas</div>
+              </div>
+            </div>
+          </div>
 
           <div className="content-grid">
             <div className="content-main">
