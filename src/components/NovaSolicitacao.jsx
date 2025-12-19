@@ -86,12 +86,39 @@ function NovaSolicitacao({ user, onLogout }) {
         justificativa: formData.motivoViagem || formData.justificativa
       }
       
-      await axios.post(`${API_BASE_URL}/api/solicitacoes`, solicitacaoData)
+      console.log('Enviando solicitação para:', `${API_BASE_URL}/api/solicitacoes`)
+      console.log('Dados da solicitação:', solicitacaoData)
+      
+      const response = await axios.post(`${API_BASE_URL}/api/solicitacoes`, solicitacaoData, {
+        timeout: 60000, // 60 segundos para mobile/conexões lentas
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      console.log('Resposta do servidor:', response.data)
+      
       // Após criar, já vai para a tela de pendências de aprovação
       navigate('/aprovacoes')
     } catch (err) {
-      setError('Erro ao criar solicitação. Tente novamente.')
-      console.error('Erro:', err)
+      console.error('Erro completo:', err)
+      console.error('Erro response:', err.response)
+      console.error('Erro message:', err.message)
+      console.error('Erro code:', err.code)
+      
+      let errorMessage = 'Erro ao criar solicitação. Tente novamente.'
+      
+      if (err.code === 'ECONNABORTED') {
+        errorMessage = 'Timeout: O servidor demorou muito para responder. Verifique sua conexão e tente novamente.'
+      } else if (err.code === 'ERR_NETWORK' || err.message?.includes('Network')) {
+        errorMessage = 'Erro de rede: Não foi possível conectar ao servidor. Verifique sua conexão com a internet.'
+      } else if (err.response) {
+        errorMessage = `Erro do servidor: ${err.response.data?.message || err.response.statusText || 'Erro desconhecido'}`
+      } else if (err.message) {
+        errorMessage = `Erro: ${err.message}`
+      }
+      
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }
