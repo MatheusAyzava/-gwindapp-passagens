@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://gwind-app-test.netlify.app https://*.netlify.app
