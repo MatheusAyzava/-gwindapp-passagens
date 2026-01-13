@@ -1,0 +1,3 @@
+/*
+  X-Frame-Options: ALLOW-FROM https://gwind-app-test.netlify.app
+  Content-Security-Policy: frame-ancestors 'self' https://gwind-app-test.netlify.app
