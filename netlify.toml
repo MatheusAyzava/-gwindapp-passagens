@@ -1,4 +1,9 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
 [[headers]]
   for = "/*"
   [headers.values]
     Content-Security-Policy = "frame-ancestors 'self' https://gwind-app-test.netlify.app https://*.netlify.app"
+    X-Frame-Options = "SAMEORIGIN"
